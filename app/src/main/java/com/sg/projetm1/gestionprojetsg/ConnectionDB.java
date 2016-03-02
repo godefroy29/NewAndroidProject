@@ -13,6 +13,11 @@ import java.sql.Statement;
 
 public class ConnectionDB extends AsyncTask<Void, Integer, Void>
 {
+    public String adr;
+    public String dbName;
+    public String dbUser;
+    public String dbPwd;
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -39,7 +44,9 @@ public class ConnectionDB extends AsyncTask<Void, Integer, Void>
 
         try {
             System.out.println("Test connection");
-            connection = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/myBase?user=plop&password=plop");
+            //connection = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/myBase?user=plop&password=plop");
+
+            connection = DriverManager.getConnection("jdbc:mysql://"+adr+":3306/"+dbName+"?user="+dbUser+"&password="+dbPwd);
             System.out.println("Connection open");
             statement = connection.createStatement();
             System.out.println("Statement créé");
